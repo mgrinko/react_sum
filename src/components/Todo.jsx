@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { TodoForm } from './TodoForm';
 
-export const Todo = ({ todo, onDelete, onUpdate }) => {
+export const Todo = ({ todo, onDelete, updateTodo }) => {
   const [isEditing, setEditing] = useState(false);
 
   const startEditing = () => setEditing(true);
   const finishEditing = () => setEditing(false);
 
-  const saveChanges = (formData) => {
-    onUpdate({ ...todo, ...formData });
+  const saveTodo = (formData) => {
+    updateTodo({ ...todo, ...formData });
     finishEditing();
   };
 
   if (isEditing) {
     return <>
-      <TodoForm todo={todo} onSave={saveChanges}/>
+      <TodoForm todo={todo} saveTodo={saveTodo} />
       <button onClick={finishEditing}>Cancel</button>
     </>;
   }

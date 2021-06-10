@@ -33,11 +33,11 @@ const App = () => {
 
   return <>
     Add todo:
-    <TodoForm onSave={addTodo} />
+    <TodoForm saveTodo={addTodo} />
     <TodoList
       todos={todos}
-      onTodoDelete={deleteTodo}
-      onTodoUpdate={updateTodo}
+      deleteTodo={deleteTodo}
+      updateTodo={updateTodo}
     />
   </>;
 };

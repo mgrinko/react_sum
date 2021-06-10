@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const TodoForm = ({ onSave, todo }) => {
+export const TodoForm = ({ saveTodo, todo }) => {
   const [title, setTitle] = useState(todo ? todo.title : '');
   const [completed, setCompleted] = useState(todo ? todo.completed : false);
   const [userId, setUserId] = useState(todo ? todo.userId : 0);
@@ -11,7 +11,7 @@ export const TodoForm = ({ onSave, todo }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    onSave({ title, completed, userId });
+    saveTodo({ title, completed, userId });
   };
 
   return (
