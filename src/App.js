@@ -21,7 +21,15 @@ const App = () => {
   const deleteTodo = (todoId) => {
     const filtered = todos.filter(todo => todo.id !== todoId);
     setTodos(filtered);
-  }
+  };
+
+  const updateTodo = (updatedTodo) => {
+    const copy = [...todos];
+    const index = todos.findIndex(todo => todo.id === updatedTodo.id);
+
+    copy.splice(index, 1, updatedTodo);
+    setTodos(copy);
+  };
 
   return <>
     Add todo:
@@ -29,6 +37,7 @@ const App = () => {
     <TodoList
       todos={todos}
       onTodoDelete={deleteTodo}
+      onTodoUpdate={updateTodo}
     />
   </>;
 };
