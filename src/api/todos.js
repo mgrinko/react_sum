@@ -31,7 +31,6 @@ export const updateTodo = ({ id, title, completed, userId }) => {
     .then(result => result.data);
 };
 
-
 export const deleteTodo = (todoId) => {
   return fetch(`${BASE_URL}/todos/${todoId}`, {
     method: 'DELETE',

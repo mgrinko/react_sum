@@ -32,15 +32,15 @@ const App = () => {
     todosAPI.deleteTodo(todoId)
       .then(loadTodos);
   };
-  const updateTodo = (updatedTodo) => {
+  const updateTodo = async (updatedTodo) => {
     // const copy = [...todos];
     // const index = todos.findIndex(todo => todo.id === updatedTodo.id);
     //
     // copy.splice(index, 1, updatedTodo);
     // setTodos(copy);
 
-    todosAPI.updateTodo(updatedTodo)
-      .then(loadTodos);
+    await todosAPI.updateTodo(updatedTodo)
+    loadTodos();
   };
 
   return <>
