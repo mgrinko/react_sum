@@ -14,7 +14,7 @@ const App = () => {
   }, []);
 
   return <>
-    Add todo: <TodoForm />
+    Add todo: <TodoForm onSave={() => {}} />
     <TodoList todos={todos} />
   </>;
 };
