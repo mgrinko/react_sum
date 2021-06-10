@@ -13,15 +13,23 @@ const App = () => {
     getTodos().then(setTodos);
   }, []);
 
-  const addTodo = ({ title, completed, userId }) => {
-    const newTodo = { title, completed, userId, id: uuidv4() };
+  const addTodo = (todoData) => {
+    const newTodo = { ...todoData, id: uuidv4() };
     setTodos([newTodo, ...todos]);
   };
+
+  const deleteTodo = (todoId) => {
+    const filtered = todos.filter(todo => todo.id !== todoId);
+    setTodos(filtered);
+  }
 
   return <>
     Add todo:
     <TodoForm onSave={addTodo} />
-    <TodoList todos={todos} />
+    <TodoList
+      todos={todos}
+      onTodoDelete={deleteTodo}
+    />
   </>;
 };
 
