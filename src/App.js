@@ -23,18 +23,24 @@ const App = () => {
     // setTodos([newTodo, ...todos]);
 
     todosAPI.addTodo(todoData)
-      .then(loadTodos);
+      .then(loadTodos)
   };
   const deleteTodo = (todoId) => {
-    const filtered = todos.filter(todo => todo.id !== todoId);
-    setTodos(filtered);
+    // const filtered = todos.filter(todo => todo.id !== todoId);
+    // setTodos(filtered);
+
+    todosAPI.deleteTodo(todoId)
+      .then(loadTodos);
   };
   const updateTodo = (updatedTodo) => {
-    const copy = [...todos];
-    const index = todos.findIndex(todo => todo.id === updatedTodo.id);
+    // const copy = [...todos];
+    // const index = todos.findIndex(todo => todo.id === updatedTodo.id);
+    //
+    // copy.splice(index, 1, updatedTodo);
+    // setTodos(copy);
 
-    copy.splice(index, 1, updatedTodo);
-    setTodos(copy);
+    todosAPI.updateTodo(updatedTodo)
+      .then(loadTodos);
   };
 
   return <>
