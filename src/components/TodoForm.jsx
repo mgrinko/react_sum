@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-export const TodoForm = ({ onSave }) => {
-  const [title, setTitle] = useState('');
-  const [completed, setCompleted] = useState(false);
-  const [userId, setUserId] = useState(0);
+export const TodoForm = ({ onSave, todo }) => {
+  const [title, setTitle] = useState(todo ? todo.title : '');
+  const [completed, setCompleted] = useState(todo ? todo.completed : false);
+  const [userId, setUserId] = useState(todo ? todo.userId : 0);
 
   const onTitleChange = event => setTitle(event.target.value);
   const onCompletedChange = event => setCompleted(event.target.checked);
@@ -12,7 +12,7 @@ export const TodoForm = ({ onSave }) => {
   const onSubmit = (event) => {
     event.preventDefault();
     onSave({ title, completed, userId });
-  }
+  };
 
   return (
     <form onSubmit={onSubmit}>

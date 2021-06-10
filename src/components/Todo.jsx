@@ -7,9 +7,14 @@ export const Todo = ({ todo, onDelete, onUpdate }) => {
   const startEditing = () => setEditing(true);
   const finishEditing = () => setEditing(false);
 
+  const saveChanges = (formData) => {
+    onUpdate({ ...todo, ...formData });
+    finishEditing();
+  };
+
   if (isEditing) {
     return <>
-      <TodoForm />
+      <TodoForm todo={todo} onSave={saveChanges}/>
       <button onClick={finishEditing}>Cancel</button>
     </>;
   }
