@@ -13,8 +13,14 @@ const App = () => {
     getTodos().then(setTodos);
   }, []);
 
+  const addTodo = ({ title, completed, userId }) => {
+    const newTodo = { title, completed, userId, id: uuidv4() };
+    setTodos([newTodo, ...todos]);
+  };
+
   return <>
-    Add todo: <TodoForm onSave={() => {}} />
+    Add todo:
+    <TodoForm onSave={addTodo} />
     <TodoList todos={todos} />
   </>;
 };
