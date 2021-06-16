@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { TodosContext } from '../TodosProvider';
 import { Todo } from './Todo';
 
 export const TodoList = React.memo(
-  ({ todos, deleteTodo, updateTodo }) => {
+  ({ todos }) => {
+    const { deleteTodo, updateTodo } = useContext(TodosContext);
+
     console.log('Rendering TodoList');
 
     return (
